@@ -1,6 +1,7 @@
 const mongooose = require('mongoose');
+const Schema = mongooose.Schema;
 
-const userSchema = new mongooose.Schema ({
+const userSchema = new Schema ({
     email: {
         type: String,
         required: [true, 'Email is required']
@@ -13,6 +14,9 @@ const userSchema = new mongooose.Schema ({
         type: String,
         required: [true, 'Password is required']
     },
+    readingList: [{ 
+        type: Schema.Types.ObjectId, ref: 'Book' 
+    }]
 });
 
 const User = mongooose.model('User', userSchema);
