@@ -1,5 +1,31 @@
 const User = require("../models/userSchema");// Mengimpor model User yang akan digunakan untuk operasi database
 
+async function loginUser(req, res) {
+    const { username, password } = req.body;
+
+    try {
+        // Cari pengguna berdasarkan username
+        const user = await User.findOne({ username });
+
+        // Jika pengguna tidak ditemukan
+        if (!user) {
+        return res.status(404).json({ message: 'Username tidak ditemukan' });
+        }
+
+        // Verifikasi password
+        if (user.password !== password) {
+        return res.status(401).json({ message: 'Password salah' });
+        }
+
+        // Jika login berhasil, kirim respons sukses
+        res.status(200).json({ message: 'Login berhasil', data: user });
+    } catch (error) {
+        // Tangani kesalahan server
+        console.error('Error logging in:', error);
+        res.status(500).json({ message: 'Terjadi kesalahan saat login', error: error.message });
+    }
+}
+
 // Fungsi untuk menambahkan pengguna baru
 async function addUser(req, res) {
     const { email, username, password } = req.body; // Mendapatkan data pengguna dari request
@@ -13,6 +39,18 @@ async function addUser(req, res) {
     } 
     catch (err) {
         // Mengirim respons kesalahan jika terjadi kesalahan saat menambahkan pengguna
+        res.status(500).send(err);
+    }
+}
+
+// Fungsi untuk mendapatkan data semua pengguna
+async function getAllUsers(req, res) {
+    try {
+        const users = await User.find();
+        res.status(200).json({ message: "Berhasil mendapatkan semua data pengguna", data: users });
+    }
+    catch (err) {
+        // Mengirim respons kesalahan jika terjadi kesalahan saat mengambil data pengguna
         res.status(500).send(err);
     }
 }
@@ -61,7 +99,9 @@ async function deleteUser(req, res) {
 
 // Mengekspor semua fungsi agar dapat digunakan di file lain
 module.exports = {
+    loginUser,
     addUser,
+    getAllUsers,
     updateUser,
     deleteUser
 }
