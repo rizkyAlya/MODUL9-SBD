@@ -1,0 +1,61 @@
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #622A0F; 
+}
+
+.login-form {
+  background-color: #F5DEB3;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+  width: 300px;
+  text-align: center;
+}
+
+.login-title {
+  font-size: 25px;
+  font-family: 'EB Garamond';
+}
+
+.login-form h2 {
+  color: #5d4037; 
+}
+
+.form-group {
+  margin-top: 20px;
+  margin-bottom: 15px;
+  text-align: left;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  color: #5d4037; 
+}
+
+.form-group input {
+  width: calc(100% - 20px); 
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+button {
+  width: 100%;
+  padding: 10px;
+  background-color: #795548; 
+  border: none;
+  color: #ffffff; 
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #5d4037;
+}
