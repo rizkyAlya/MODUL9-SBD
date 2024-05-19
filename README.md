@@ -32,7 +32,7 @@ Aplikasi ini memiliki fitur CRUD (Create, Read, Update, Delete) yang memungkinka
 1. **Clone Repository**
    ```bash
    git clone https://github.com/rizkyAlya/MODUL9-SBD.git
-   cd book-vault
+   cd ReadingList
 2. **Instalasi Dependencies**
    ```bash
    npm install
