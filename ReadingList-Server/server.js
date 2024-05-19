@@ -6,7 +6,7 @@ const express = require('express');
 const cors = require("cors");
 const mongoose = require('mongoose');
 
-const userController = require("./controllers/userController");// Mengimpor repository UserRepo yang berisi operasi-operasi terkait pengguna
+const userController = require("./controllers/userController");
 const bookController = require("./controllers/bookController");
 
 const app = express();
@@ -33,17 +33,18 @@ db.once('open', function(){
 });
 
 // Definisi Endpoint untuk User
-app.post("/loginUser", userController.loginUser);
+app.post("/loginUser", userController.loginUser); // Endpoint untu login akun pengguna
 app.post("/addUser", userController.addUser); // Endpoint untuk menambahkan pengguna baru
-app.get("/getAllUsers", userController.getAllUsers);
-app.put("/updateUser/:username", userController.updateUser); // Endpoint untuk memperbarui pengguna berdasarkan NPM
-app.delete("/deleteUser/:username", userController.deleteUser); // Endpoint untuk menghapus pengguna berdasarkan NPM
+app.get("/getAllUsers", userController.getAllUsers); // Endpoint untuk mendapartkan semua pengguna
+app.put("/updateUser/:username", userController.updateUser); // Endpoint untuk memperbarui pengguna berdasarkan username
+//app.delete("/deleteUser/:username", userController.deleteUser); // Endpoint untuk menghapus pengguna berdasarkan username
 
 // Definisi Endpoint untuk Book
-app.post("/addBook", bookController.addBook);
-app.get("/getAllBooks", bookController.getAllBooks);
-app.post("/addToList", bookController.addToList);
-app.post("/deleteFromList", bookController.deleteFromList);
+app.post("/addBook", bookController.addBook); // Endpoint untuk menambahkan buku ke reading list
+app.get("/getAllBooks", bookController.getAllBooks); // Endpoint untuk mendapatkan semua reading list
+app.delete("/deleteBook/:title", bookController.deleteBook); // Endpoint untuk menambahkan pengguna baru
+//app.post("/addToList", bookController.addToList); // Endpoint untuk menambahkan buku ke reading list dari seorang pengguna
+//app.post("/deleteFromList", bookController.deleteFromList); // Endpoint untuk menghapus sebuah buku dari reading list pengguna
 
 // Menjalankan server dan mendengarkan permintaan pada port yang ditentukan
 app.listen(PORT, () => console.log(`Server started at port:${PORT}`));

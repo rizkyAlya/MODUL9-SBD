@@ -7,21 +7,6 @@
     background-color: #622A0F;
   }
   
-  .page-title1 {
-    font-size: 45px;
-    font-family: 'EB Garamond';
-    color: #F5DEB3;
-    text-align: center;
-  }
-  
-  .page-title2 {
-    font-size: 55px;
-    font-family: 'EB Garamond';
-    font-weight: bold;
-    color: #F5DEB3;
-    text-align: center;
-  }
-
   .signup-form {
     background-color: #F5DEB3; 
     padding: 20px;
@@ -30,7 +15,6 @@
     max-width: 400px;
     width: 100%;
     text-align: center;
-    margin-top: 30px;
   }
 
   .signup-title {

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { addUser } from '../actions/userAction'; // Mengimpor fungsi signUpUser dari file actions
+import { useNavigate } from 'react-router-dom';
+import { addUser } from '../actions/userAction';
 import './signUp.css'; 
 
 const SignUp = () => {
@@ -7,12 +8,13 @@ const SignUp = () => {
   const [newUsername, setNewUsername] = useState('');
   const [newPassword, setNewPassword] = useState('');
   const [error, setError] = useState('');
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
-      // Kirim data sign up ke backend menggunakan fungsi signUpUser
+      // Kirim data sign up ke backend menggunakan fungsi di userAction
       const userData = {
         email: newEmail,
         username: newUsername,
@@ -24,23 +26,23 @@ const SignUp = () => {
       if (response.success) {
         console.log('Sign up successful:', response.data);
         // Redirect ke halaman beranda setelah sign up berhasil
-        //history.push('/'); 
         alert("sign up success");
+        navigate('/login');
       } else {
         setError('Failed to sign up');
-        alert("failed to login");
+        alert("Failed to sign up");
       }
-
-
     } catch (error) {
-      console.error('Sign up failed:', error);
-      setError('Failed');
-      alert("failed to login");
+      console.error('server error:', error);
+      setError('server error');
+      alert("Server error");
     }
   };
 
   return (
     <div className="signup-container">
+      <h1 className="page-title1">Welcome to</h1>
+      <h1 className="page-title2">BOOK VAULT</h1>
       <form className="signup-form" onSubmit={handleSubmit}>
         <h2 className="signup-title">Sign Up</h2>
         <div className="input-group">

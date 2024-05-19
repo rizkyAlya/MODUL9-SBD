@@ -1,9 +1,6 @@
 const mongooose = require('mongoose');
 
 const bookSchema = new mongooose.Schema ({
-    image: {
-        type: String
-    },
     title: {
         type: String,
         required: [true, 'Book Title is required']

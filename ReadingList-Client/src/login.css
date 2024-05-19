@@ -3,18 +3,33 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100vh;
   background-color: #622A0F; 
+}
+
+.page-title1 {
+  font-size: 45px;
+  font-family: 'EB Garamond';
+  color: #F5DEB3;
+  text-align: center;
+}
+
+.page-title2 {
+  font-size: 55px;
+  font-family: 'EB Garamond';
+  font-weight: bold;
+  color: #F5DEB3;
+  text-align: center;
 }
 
 .login-form {
   background-color: #F5DEB3;
   padding: 20px;
   border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+  box-shadow: 0 0 10px rgb(156, 76, 11); 
   width: 100%;
   max-width: 350px;
   text-align: center;
+  margin-top: 30px;
 }
 
 .login-title {

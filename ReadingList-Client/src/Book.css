@@ -1,0 +1,18 @@
+.text {
+  background-color: #622A0F;
+  color: #ECE4DC;
+}
+
+.text:hover {
+  color: #A57E57;
+}
+
+.book-card {
+  height: 100px;
+  transition: 0.3s ease;
+  overflow: hidden;
+}
+
+.book-card:hover {
+  height: 400px;
+}

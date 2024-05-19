@@ -1,0 +1,17 @@
+.text {
+    background-color: #622A0F;
+    color: white; 
+  
+    /* Gaya teks tombol dihover */
+    &:hover {
+      color: #A57E57; 
+    }
+}
+
+.title {
+    font-family: 'EB Garamond';
+    font-size: x-large;
+    color: white;
+    font: bold;
+    background-color: #622A0F;
+}

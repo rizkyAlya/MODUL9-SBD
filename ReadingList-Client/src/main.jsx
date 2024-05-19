@@ -10,27 +10,40 @@ import {
 
 import Login from './login.jsx';
 import SignUp from './signUp.jsx';
+import Navbar from './Navbar.jsx';
+import Book from './Book.jsx';
+import AddBook from './addBook.jsx';
+import UpUser from './updateUser.jsx';
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
   },
-  
-  //path untuk menampilkan movies jika Movie Collections pada Navbar di klik
   {
     path: "/login",
-    element: < Login />
+    element: <Login />
   },
-  //path untuk menampilkan detail movie jika salah satu movie di klik
   {
     path: "/signUp",
     element: <SignUp />,
   },
-  /*{
-    path: "home",
-    element: <Home />
-  },*/
+  {
+    path: "/navbar",
+    element: <Navbar />,
+  },
+  {
+    path: "/book",
+    element: <Book />
+  },
+  {
+    path: "/addBook",
+    element: <AddBook />
+  },
+  {
+    path: "/upUser",
+    element: <UpUser />
+  }
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(

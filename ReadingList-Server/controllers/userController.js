@@ -55,16 +55,13 @@ async function getAllUsers(req, res) {
     }
 }
 
-// Fungsi untuk memperbarui pengguna berdasarkan NPM
 async function updateUser(req, res) {
-    const { username } = req.params; // Mendapatkan NPM pengguna yang akan diperbarui dari parameter URL
-    const { password } = req.body; // Mendapatkan data pengguna yang akan diperbarui dari badan permintaan
+    const { username } = req.params; 
+    const { password } = req.body; 
 
     try {
-        // Mencari pengguna berdasarkan NPM dan memperbarui data pengguna
-        const user = await User.findOneAndUpdate({ username }, { password }, { new: true });
+        const user = await User.findOneAndUpdate({ username }, { password }, { new: true })
 
-        // Memeriksa apakah pengguna ditemukan dan diperbarui
         if (user) {
             res.status(200).json({ message: "Berhasil memperbarui kata sandi pengguna", data: user });
         } else {
@@ -76,14 +73,12 @@ async function updateUser(req, res) {
     }
 }
 
-// Fungsi untuk menghapus pengguna berdasarkan NPM
 async function deleteUser(req, res) {
-    const { username } = req.params; // Mendapatkan NPM pengguna yang akan dihapus dari parameter URL
+    const { username } = req.params; 
 
     try {
-        const user = await User.findOneAndDelete({ username }); // Mencari pengguna berdasarkan NPM dan menghapusnya
+        const user = await User.findOneAndDelete({ username }); 
 
-        // Memeriksa apakah pengguna ditemukan dan dihapus
         if (user) {
             res.status(200).json({ message: "Data pengguna berhasil dihapus", data: user });
         }
@@ -103,5 +98,5 @@ module.exports = {
     addUser,
     getAllUsers,
     updateUser,
-    deleteUser
+    //deleteUser
 }

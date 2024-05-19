@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { loginUser } from '../actions/userAction'; 
 import './login.css'; 
 
 const Login = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -17,7 +18,7 @@ const Login = () => {
         // Berhasil login
         console.log('Login success!');
         alert('Login success');
-        // Redirect ke halaman beranda atau lakukan tindakan yang sesuai
+        navigate('/book');
       } else {
         alert('Username/password incorrect');
       }
@@ -29,6 +30,8 @@ const Login = () => {
 
   return (
     <div className="login-container">
+      <h1 className="page-title1">Welcome to</h1>
+      <h1 className="page-title2">BOOK VAULT</h1>
       <form className="login-form" onSubmit={handleSubmit}>
         <h2 className="login-title">LOGIN</h2>
         <div className="form-group">

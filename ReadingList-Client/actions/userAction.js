@@ -27,3 +27,16 @@ export const addUser = async (userData) => {
   }
 };
 
+export const upUser = async (username, newPassword) => {
+  try {
+    const response = await axios.put(`${API_URL}/updateUser/${username}`, { newPassword });
+    
+    return true;
+  } catch (error) {
+    console.error('Error updating user:', error);
+    return baseApiResponse(null, false);
+  }
+};
+
+
+

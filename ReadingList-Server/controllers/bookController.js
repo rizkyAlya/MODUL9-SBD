@@ -1,8 +1,8 @@
-const Book = require("../models/bookSchema");// Mengimpor model User yang akan digunakan untuk operasi database
+const Book = require("../models/bookSchema");
 const User = require("../models/userSchema");
 
 async function addBook(req, res) {
-    const { image, title, author, synopsis } = req.body;
+    const { title, author, synopsis } = req.body;
 
     try {
         // Cek apakah buku sudah ada berdasarkan judul
@@ -14,7 +14,7 @@ async function addBook(req, res) {
         }
 
         // Jika buku belum ada, tambahkan buku baru
-        const newBook = new Book({ image, title, author, synopsis });
+        const newBook = new Book({ title, author, synopsis });
         await newBook.save();
 
         res.status(201).json({ message: 'Buku berhasil ditambahkan', data: newBook });
@@ -22,7 +22,7 @@ async function addBook(req, res) {
         console.error('Error adding book:', error);
         res.status(500).json({ message: 'Terjadi kesalahan saat menambahkan buku', error: error.message });
     }
-    }
+}
 
 // Fungsi untuk mendapatkan data semua buku
 async function getAllBooks(req, res) {
@@ -35,7 +35,25 @@ async function getAllBooks(req, res) {
       }
 }
 
-async function addToList(req, res) {
+async function deleteBook(req, res) {
+    const { title } = req.params; 
+
+    try {
+        const book = await Book.findOneAndDelete({ title }); 
+
+        if (book) {
+            res.status(200).json({ message: "Buku berhasil dihapus", data: book });
+        }
+        else {
+            res.status(404).json({ messaage: "Buku tidak ditemukan"});
+        }
+    }
+    catch (err) {
+        res.status(500).send(err);
+    }
+}
+
+/*async function addToList(req, res) {
     const { userId, bookId } = req.body;
 
     try {
@@ -95,11 +113,12 @@ async function deleteFromList(req, res) {
         console.error('Error deleting book from reading list:', error);
         res.status(500).json({ message: 'Terjadi kesalahan saat menghapus buku dari reading list', error: error.message });
     }
-}
+}*/
 
 module.exports = {
     addBook,
     getAllBooks,
-    addToList,
-    deleteFromList
+    deleteBook
+    //addToList,
+    //deleteFromList
 }
